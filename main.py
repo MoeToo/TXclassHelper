@@ -10,7 +10,7 @@ screenScale = 1
 # 事先读取按钮截图
 target = cv2.imread(r"qiandao1.png", cv2.IMREAD_GRAYSCALE)
 while 1:
-    print('查找中')
+    print('持续运行中...')
     # 先截图
     screenshot = pyscreeze.screenshot('temp_screenshot.png')
     # 读取图片 灰色会快
@@ -37,8 +37,6 @@ while 1:
         tagCenterY = top_left[1] + tagHalfH
         # 左键点击屏幕上的这个位置
         pyautogui.click(tagCenterX, tagCenterY, button='left')
-    else:
-        print("未发现签到，五秒后继续...")
-
+        print("发现签到，已尝试点击")
     sleep(5)
     os.system('cls')

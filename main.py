@@ -30,7 +30,7 @@ while 1:
     res = cv2.matchTemplate(scaleTemp, target, cv2.TM_CCOEFF_NORMED)
     mn_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
     if max_val >= 0.9:
-        time = datetime.datetime.now().strftime('%H:%M:%S')
+        time = datetime.datetime.now().strftime('%H时%M分%S秒')
         # 计算出中心点
         top_left = max_loc
         bottom_right = (top_left[0] + twidth, top_left[1] + theight)
@@ -43,5 +43,7 @@ while 1:
         log += f"{time}\n发现签到，已尝试点击\n"
         os.system('cls')
         print(log)
+        sleep(1)
+        screenshot = pyscreeze.screenshot(f'result/{time}.png')
     sleep(5)
     os.system('cls')
